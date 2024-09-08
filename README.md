@@ -28,6 +28,8 @@ The program uses a three-pass structure for each page in the pdf, in order of as
 -   Next, the program checks for numerical values within recognized tables. If a table has been identified (using the `pdfplumber` library), column headers are used to identify value multipliers, and multipliers are applied accordingly when identifying numbers
 -   Lastly, the program checks for "irregular" tables, which aren't recognized by `pdfplumber`'s table detection algorithm. In such cases, value multipliers are still identified and used, but only under certain conditions. This works by searching for a table header term (ex. "\_ in thousands") at the top of a page, and applying it to numerical values on that page, if no other headers exist and no tables have been identified on this page already.
 
+The program will output the largest number found in float form, the page on which it was found, and the text that was used to recognize the number.
+
 ## TODOs:
 
 -   Since the third pass in particular may be prone to error/false positives, add a pass parameter to the program inputs, which allows the user to specify the maximum number of passes (1, 2, or 3).
